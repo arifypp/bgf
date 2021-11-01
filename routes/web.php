@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(['verify' => true]);
 
 Route::group(['prefix' => '/'], function(){
     // Homepage
-    Route::get('/','App\Http\Controllers\PagesController@index')->name('homepage');
+    Route::get('/', function () {
+        return redirect(route('login'));
+    });
+   
+});
+
+
+Route::middleware(['verified'])->group(function () {
+    //Your routes here
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::group(['prefix' => 'admin'], function(){
+        Route::group(['middleware' => 'admin'], function () {
+
+            Route::get('/dashboard','App\Http\Controllers\PagesController@index')->name('homepage');
+
+
+        });
+    });
 });

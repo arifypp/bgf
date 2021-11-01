@@ -29,7 +29,7 @@
               </div>
               <!-- Single Hero Slide -->
               <div>
-                <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/33.jpg')">
+                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/33.jpg') }}')">
                   <div class="h-100 d-flex align-items-center text-center">
                     <div class="container">
                       <h3 class="text-white mb-1">Vanilla JavaScript</h3>
@@ -40,7 +40,7 @@
               </div>
               <!-- Single Hero Slide -->
               <div> 
-                <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/32.jpg')">
+                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/32.jpg') }}')">
                   <div class="h-100 d-flex align-items-center text-center">
                     <div class="container">
                       <h3 class="text-white mb-1">PWA Ready</h3>
@@ -51,7 +51,7 @@
               </div>
               <!-- Single Hero Slide -->
               <div> 
-                <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/33.jpg')">
+                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/33.jpg') }}')">
                   <div class="h-100 d-flex align-items-center text-center">
                     <div class="container">
                       <h3 class="text-white mb-1">Lots of Elements &amp; Pages</h3>
@@ -62,7 +62,7 @@
               </div>
               <!-- Single Hero Slide -->
               <div>
-                <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/1.jpg')">
+                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/1.jpg') }}')">
                   <div class="h-100 d-flex align-items-center text-center">
                     <div class="container">
                       <h3 class="text-white mb-1">Dark &amp; RTL Ready</h3>
@@ -80,19 +80,19 @@
                 <div class="row g-3">
                   <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="img/demo-img/pwa.png" alt=""></div>
+                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/pwa.png') }}" alt=""></div>
                       <p class="mb-0">PWA Ready</p>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="img/demo-img/bootstrap.png" alt=""></div>
+                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/bootstrap.png') }}" alt=""></div>
                       <p class="mb-0">Bootstrap 5</p>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="img/demo-img/js.png" alt=""></div>
+                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/js.png') }}" alt=""></div>
                       <p class="mb-0">Vanilla JS</p>
                     </div>
                   </div>
@@ -101,7 +101,7 @@
             </div>
           </div>
           <div class="container">
-            <div class="card card-bg-img bg-img bg-overlay mb-3" style="background-image: url('img/bg-img/3.jpg')">
+            <div class="card card-bg-img bg-img bg-overlay mb-3" style="background-image: url('{{ asset('/assets/img/bg-img/3.jpg') }}')">
               <div class="card-body direction-rtl p-5">
                 <h2 class="text-white">Reusable elements</h2>
                 <p class="mb-4 text-white">More than 220+ reusable modern design elements. Just copy the code and paste it on your desired page.</p><a class="btn btn-warning" href="elements.html">All elements</a>
@@ -114,19 +114,19 @@
                 <div class="row g-3">
                   <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="img/demo-img/sass.png" alt=""></div>
+                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/sass.png') }}" alt=""></div>
                       <p class="mb-0">SCSS</p>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="img/demo-img/pug.png" alt=""></div>
+                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/pug.png') }}" alt=""></div>
                       <p class="mb-0">PUG</p>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="img/demo-img/npm.png" alt=""></div>
+                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/npm.png') }}" alt=""></div>
                       <p class="mb-0">NPM</p>
                     </div>
                   </div>

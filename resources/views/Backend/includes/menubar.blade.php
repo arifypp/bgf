@@ -36,7 +36,13 @@
                 </div>
               </div>
             </li>
-            <li><a href="page-login.html"><i class="bi bi-box-arrow-right"></i>Logout</a></li>
+            <li>
+              <a href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right"></i>Logout)</span></a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+            
+            </li>
           </ul>
           <!-- Social Info -->
           <div class="social-info-wrap"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-linkedin"></i></a></div>
