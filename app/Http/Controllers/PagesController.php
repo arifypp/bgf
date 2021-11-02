@@ -22,6 +22,12 @@ class PagesController extends Controller
         return view('Backend.pages.home');
     }
 
+    public function homepage()
+    {
+        //
+        return view('Backend.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

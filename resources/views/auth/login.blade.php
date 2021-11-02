@@ -1,7 +1,41 @@
-@extends('layouts.app')
+@extends('Backend.layouts.account')
 
-@section('content')
-<div class="container">
+@section('body')
+<div class="custom-container">
+    <div class="text-center px-4"><img class="login-intro-img" src="https://designing-world.com/affan-1.4.0/img/bg-img/36.png" alt=""></div>
+    <!-- Register Form -->
+    <div class="register-form mt-4">
+        <h6 class="mb-3 text-center">Log in to continue to BGF.</h6>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+        <div class="form-group">
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Username" required autocomplete="email" autofocus>
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        </div>
+        <div class="form-group position-relative">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="Enter Password" required autocomplete="current-password">
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        
+            <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i></div>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Sign In</button>
+        </form>
+    </div>
+    <!-- Login Meta -->
+    <div class="login-meta-data text-center">
+        <a class="stretched-link forgot-password d-block mt-3 mb-1" href="{{ route('password.request') }}">Forgot Password?</a>
+        <p class="mb-0">Didn't have an account? <a class="stretched-link" href="{{ route('register') }}">Register Now</a></p>
+    </div>
+</div>
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +103,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection

@@ -17,16 +17,17 @@ Auth::routes(['verify' => true]);
 
 Route::group(['prefix' => '/'], function(){
     // Homepage
-    Route::get('/', function () {
-        return redirect(route('login'));
-    });
+    Route::get('/','App\Http\Controllers\PagesController@homepage')->name('appstart');
+    // Route::get('/', function () {
+    //     //return redirect(route('login'));
+       
+    // });
    
 });
 
 
 Route::middleware(['verified'])->group(function () {
     //Your routes here
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::group(['prefix' => 'admin'], function(){
         Route::group(['middleware' => 'admin'], function () {
 

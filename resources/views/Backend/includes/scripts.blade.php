@@ -1,3 +1,4 @@
+    <!-- All JavaScript Files -->
     <script src="{{ asset('/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/assets/js/slideToggle.min.js') }}"></script>
     <script src="{{ asset('/assets/js/internet-status.js') }}"></script>

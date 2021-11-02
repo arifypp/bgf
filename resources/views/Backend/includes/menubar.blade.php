@@ -11,12 +11,17 @@
             <div class="user-profile"><img src="{{ asset('/assets/img/bg-img/2.jpg') }}" alt=""></div>
             <!-- User Info -->
             <div class="user-info">
-              <h6 class="user-name mb-0">Affan Islam</h6><span>CEO, Designing World</span>
+              <h6 class="user-name mb-0">{{ Auth::user()->name }}</h6>
+              @if(Auth::user()->is_super == 0)
+              <span>CEO, Bismillah Garden Family</span>
+              @elseif(Auth::user()->is_super == 1)
+              <span>Flat Owner</span>
+              @endif
             </div>
           </div>
           <!-- Sidenav Nav -->
           <ul class="sidenav-nav ps-0">
-            <li><a href="page-home.html"><i class="bi bi-house-door"></i>Home</a></li>
+            <li><a href="{{ route('homepage') }}"><i class="bi bi-house-door"></i>Home</a></li>
             <li><a href="elements.html"><i class="bi bi-folder2-open"></i>Elements<span class="badge bg-danger rounded-pill ms-2">220+</span></a></li>
             <li><a href="pages.html"><i class="bi bi-collection"></i>Pages<span class="badge bg-success rounded-pill ms-2">100+</span></a></li>
             <li><a href="#"><i class="bi bi-cart-check"></i>Shop</a>
@@ -37,7 +42,7 @@
               </div>
             </li>
             <li>
-              <a href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right"></i>Logout)</span></a>
+              <a href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right"></i>Logout</span></a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
@@ -48,7 +53,7 @@
           <div class="social-info-wrap"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-linkedin"></i></a></div>
           <!-- Copyright Info -->
           <div class="copyright-info">
-            <p>2021 &copy; Made by<a href="#">Designing World</a></p>
+            <p>2021 &copy; Made by<a href="https://happyarif.com">Happy Arif</a></p>
           </div>
         </div>
       </div>
