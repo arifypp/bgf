@@ -50,6 +50,21 @@ Route::middleware(['verified'])->group(function () {
         
             });
             
+            // Unit Information
+            Route::group(['prefix' => 'unit'], function() {
+
+                Route::get('/manage', 'App\Http\Controllers\Backend\UnitController@index')->name('unit.manage');
+        
+                Route::get('/create', 'App\Http\Controllers\Backend\UnitController@create')->name('unit.create');
+        
+                Route::post('/store', 'App\Http\Controllers\Backend\UnitController@store')->name('unit.store');
+        
+                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\UnitController@edit')->name('unit.edit');
+        
+                Route::post('/update/{id}', 'App\Http\Controllers\Backend\UnitController@update')->name('unit.update');
+        
+                Route::get('/delete/{id}', 'App\Http\Controllers\Backend\UnitController@destroy')->name('unit.destroy');
+            });
 
         });
     });

@@ -9,6 +9,7 @@
           <div class="logo-wrapper"><a href="{{ route('homepage') }}"><img src="{{ asset('/assets/img/core-img/logo.png') }}" alt=""></a></div>
           <!-- Navbar Toggler -->
           <div class="navbar--toggler" id="affanNavbarToggler" data-bs-toggle="offcanvas" data-bs-target="#affanOffcanvas" aria-controls="affanOffcanvas"><span class="d-block"></span><span class="d-block"></span><span class="d-block"></span></div>
+          
         </div>
         <!-- # Header Five Layout End -->
       </div>

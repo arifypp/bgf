@@ -1,4 +1,5 @@
 @extends ('Backend.layouts.main')
+@section('title') Dashboard @endsection
   @section('body')
           <!-- Welcome Toast -->
           <div class="toast toast-autohide custom-toast-1 toast-success home-page-toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="7000" data-bs-autohide="true">
@@ -14,66 +15,119 @@
             <button class="btn btn-close btn-close-white position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
           <!--==== Body content ====-->
-          <div class="tiny-slider-one-wrapper">
-            <div class="tiny-slider-one">
-              <!-- Single Hero Slide -->
-              <div>
-                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/31.jpg') }}')">
-                  <div class="h-100 d-flex align-items-center text-center">
-                    <div class="container">
-                      <h3 class="text-white mb-1">Build with Bootstrap 5</h3>
-                      <p class="text-white mb-4">Build fast, responsive sites with Bootstrap.</p><a class="btn btn-creative btn-warning" href="#">Buy Now</a>
-                    </div>
+          <div class="pt-3"></div>
+          <div class="container">
+            <div class="row g-3">
+            <div class="element-heading mt-3">
+              <h6>Bismillah Garden Family Dashboard</h6>
+            </div>
+              <!-- Today earning  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 509990</h5>
+                        </div>
+                        <p class="mb-0">Today Earning</p>
+                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Single Hero Slide -->
-              <div>
-                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/33.jpg') }}')">
-                  <div class="h-100 d-flex align-items-center text-center">
-                    <div class="container">
-                      <h3 class="text-white mb-1">Vanilla JavaScript</h3>
-                      <p class="text-white mb-4">The whole code is written with vanilla JS.</p><a class="btn btn-creative btn-warning" href="#">Buy Now</a>
-                    </div>
+              <!-- Last Week earning  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 509990</h5>
+                        </div>
+                        <p class="mb-0">Last Week Earning</p>
+                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Single Hero Slide -->
-              <div> 
-                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/32.jpg') }}')">
-                  <div class="h-100 d-flex align-items-center text-center">
-                    <div class="container">
-                      <h3 class="text-white mb-1">PWA Ready</h3>
-                      <p class="text-white mb-4">Click the "Add to Home Screen" button &amp; <br> enjoy it like an app.</p><a class="btn btn-creative btn-warning" href="#">Buy Now</a>
-                    </div>
+              <!-- Last Month earning  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 509990777</h5>
+                        </div>
+                        <p class="mb-0">Last Months Earning</p>
+                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Single Hero Slide -->
-              <div> 
-                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/33.jpg') }}')">
-                  <div class="h-100 d-flex align-items-center text-center">
-                    <div class="container">
-                      <h3 class="text-white mb-1">Lots of Elements &amp; Pages</h3>
-                      <p class="text-white mb-4">Create your website in days, not months.</p><a class="btn btn-creative btn-warning" href="#">Buy Now</a>
-                    </div>
+              <!-- Last Year earning  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 509990777</h5>
+                        </div>
+                        <p class="mb-0">Last Years Earning</p>
+                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Single Hero Slide -->
-              <div>
-                <div class="single-hero-slide bg-overlay" style="background-image: url('{{ asset('/assets/img/bg-img/1.jpg') }}')">
-                  <div class="h-100 d-flex align-items-center text-center">
-                    <div class="container">
-                      <h3 class="text-white mb-1">Dark &amp; RTL Ready</h3>
-                      <p class="text-white mb-4">You can use the Dark or <br> RTL mode of your choice.</p><a class="btn btn-creative btn-warning" href="#">Buy Now</a>
-                    </div>
+              <!-- Today Expenses  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 5777</h5>
+                        </div>
+                        <p class="mb-0">Today Expenses</p>
+                     </div>
                   </div>
                 </div>
               </div>
+              <!-- Last Week Expenses  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 6528</h5>
+                        </div>
+                        <p class="mb-0">Last Week Expenses</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Last Months Expenses  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 4756</h5>
+                        </div>
+                        <p class="mb-0">Last Month Expenses</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Last Year Expenses  -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="feature-card mx-auto text-center">
+                        <div class="card mx-auto">
+                          <h5>৳ 4756</h5>
+                        </div>
+                        <p class="mb-0">Last Year Expenses</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-2"></div>
             </div>
           </div>
-          <div class="pt-3"></div>
           <div class="container direction-rtl">
             <div class="card mb-3">
               <div class="card-body">
@@ -100,74 +154,7 @@
               </div>
             </div>
           </div>
-          <div class="container">
-            <div class="card card-bg-img bg-img bg-overlay mb-3" style="background-image: url('{{ asset('/assets/img/bg-img/3.jpg') }}')">
-              <div class="card-body direction-rtl p-5">
-                <h2 class="text-white">Reusable elements</h2>
-                <p class="mb-4 text-white">More than 220+ reusable modern design elements. Just copy the code and paste it on your desired page.</p><a class="btn btn-warning" href="elements.html">All elements</a>
-              </div>
-            </div>
-          </div>
-          <div class="container direction-rtl">
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="row g-3">
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/sass.png') }}" alt=""></div>
-                      <p class="mb-0">SCSS</p>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/pug.png') }}" alt=""></div>
-                      <p class="mb-0">PUG</p>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="{{ asset('/assets/img/demo-img/npm.png') }}" alt=""></div>
-                      <p class="mb-0">NPM</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="card bg-primary mb-3 bg-img" style="background-image: url('img/core-img/1.png')">
-              <div class="card-body direction-rtl p-5">
-                <h2 class="text-white">Ready pages</h2>
-                <p class="mb-4 text-white">Already designed more than 100+ pages for your needs. Such as - Authentication, Chats, eCommerce, Blog &amp; Miscellaneous pages.</p><a class="btn btn-warning" href="pages.html">All pages</a>
-              </div>
-            </div>
-          </div>
-          <div class="container direction-rtl">
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="row g-3">
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><img src="img/demo-img/gulp.png" alt=""></div>
-                      <p class="mb-0">Gulp 4</p>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><i class="bi bi-moon text-dark"></i></div>
-                      <p class="mb-0">Dark Mode</p>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><i class="bi bi-box-arrow-left text-info"></i></div>
-                      <p class="mb-0">RTL Ready</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div class="container">
             <div class="card mb-3">
               <div class="card-body">
@@ -203,41 +190,7 @@
               </div>
             </div>
           </div>
-          <div class="container direction-rtl">
-            <div class="card">
-              <div class="card-body">
-                <div class="row g-3">
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray"><i class="bi bi-star text-warning"></i></div>
-                      <p class="mb-0">Best Rated</p>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray">
-                        <svg class="bi bi-award text-success" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
-                          <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"></path>
-                          <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"></path>
-                        </svg>
-                      </div>
-                      <p class="mb-0">Elegant</p>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="feature-card mx-auto text-center">
-                      <div class="card mx-auto bg-gray">
-                        <svg class="bi bi-lightning-charge text-primary" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
-                          <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"></path>
-                        </svg>
-                      </div>
-                      <p class="mb-0">Trendsetter</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         
           <div class="pb-3"></div>
 
   @endsection

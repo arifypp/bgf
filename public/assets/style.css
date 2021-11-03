@@ -2048,7 +2048,7 @@ form .btn.btn-sm {
   display: block;
 }
 .header-content .logo-wrapper a img {
-  max-height: 26px;
+  max-height: 40px;
   width: auto;
 }
 .header-content .navbar--toggler {
@@ -8725,4 +8725,8 @@ input[type=color].form-control.is-valid, input[type=color].form-control:valid {
 }
 [data-theme=dark] body .single-plan-check {
   border-color: rgba(255, 255, 255, 0.1);
+}
+/* Custom Css */
+.swal2-popup {
+  font-size: .7rem;
 }

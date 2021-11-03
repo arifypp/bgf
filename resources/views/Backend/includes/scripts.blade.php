@@ -11,5 +11,11 @@
     <script src="{{ asset('/assets/js/magic-grid.min.js') }}"></script>
     <script src="{{ asset('/assets/js/dark-rtl.js') }}"></script>
     <script src="{{ asset('/assets/js/active.js') }}"></script>
+    <!-- Sweet Alert -->
+    <script src="{{ asset('/assets/js/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/toastr/toastr.init.js') }}"></script>
+    
     <!-- PWA -->
     <script src="{{ asset('/assets/js/pwa.js') }}"></script>
+ 
+@yield('script')

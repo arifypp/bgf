@@ -1,5 +1,5 @@
 @extends ('Backend.layouts.main')
-@section('title') Floor Information @endsection
+@section('title') Unit Information @endsection
   @section('body')
   <div class="page-content-wrapper py-3">
       <div class="container">
@@ -17,21 +17,22 @@
               <thead>
                 <tr>
                   <th>Floor Number</th>
+                  <th>Unit Number</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-              @foreach($floor as $floors)
+              @foreach($unit as $units)
                 <tr>
-                  <td>{{ $floors->floorno  }}</td>
+                  <td>{{ $units->unit->floorno  }}</td>
                   <td class="text-right">
                       <div class="btn-group">
-                      <a class="m-1" href="{{ route('floor.edit', $floors->id) }}"><i class="bi bi-gear"></i></a>
-                      <a class="m-1 text-danger" href="#" data-bs-toggle="modal" data-bs-target="#DeleteFloor{{ $floors->id }}"><i class="bi bi-trash"></i></a>
+                      <a class="m-1" href="{{ route('floor.edit', $units->id) }}"><i class="bi bi-gear"></i></a>
+                      <a class="m-1 text-danger" href="#" data-bs-toggle="modal" data-bs-target="#DeleteFloor{{ $units->id }}"><i class="bi bi-trash"></i></a>
                       </div>
                   </td>
                   <!-- Modal view -->
-                  <div class="modal fade" id="DeleteFloor{{ $floors->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                  <div class="modal fade" id="DeleteFloor{{ $units->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -43,7 +44,7 @@
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal">No</button>
-                        <a href="{{ route('floor.destroy', $floors->id) }}" class="btn btn-sm btn-primary">Confirm</a>
+                        <a href="{{ route('floor.destroy', $units->id) }}" class="btn btn-sm btn-primary">Confirm</a>
                       </div>
                     </div>
                   </div>

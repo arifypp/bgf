@@ -5,13 +5,9 @@ namespace App\Models\Backend;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Floor extends Model
+class Unit extends Model
 {
     use HasFactory;
 
-    function unit()
-    {
-    	return $this->belongsTo(Unit::class, 'floorno');
-    }
-
+    protected $table = 'units';
 }
