@@ -15,19 +15,35 @@
               @csrf
               <div class="form-group">
                 <label class="form-label" for="exampleInputText">Floor Name</label>
-                <select class="form-select form-select-sm" id="defaultSelectSm" aria-label="Default select example" name="floorno">
+                <select class="form-select form-select-sm" id="floorno" aria-label="Default select example" name="floorno">
                   <option value="-0" selected="">-- Please Select --</option>
                   @foreach(App\Models\Backend\Floor::orderBy('id', 'desc')->get() as $floor)
                   <option value="{{ $floor->id }}">{{ $floor->floorno }}</option>
                   @endforeach
                 </select>	
                 <span class="text-danger">@error('floorno'){{ $message }} @enderror</span>
-              </div>              
-
+              </div>
+              
               <div class="form-group">
                 <label class="form-label" for="exampleInputText">Unit Name</label>
-                <input class="form-control" id="exampleInputText" type="text" name="unitname" placeholder="Enter Unit Name">
+                <select class="form-select form-select-sm" id="unitname" aria-label="Default select example" name="unitname">
+                  <option value="-0" selected="">-- Please Select --</option>
+                  @foreach(App\Models\Backend\Unit::orderBy('id', 'desc')->get() as $unit)
+                  <option value="{{ $unit->id }}">{{ $unit->unitname }}</option>
+                  @endforeach
+                </select>	
                 <span class="text-danger">@error('unitname'){{ $message }} @enderror</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="exampleInputText">Owner Name</label>
+                <select class="form-select form-select-sm" id="defaultSelectSm" aria-label="Default select example" name="owneruser">
+                  <option value="-0" selected="">-- Please Select --</option>
+                  @foreach(App\Models\User::orderBy('id', 'desc')->get() as $owner)
+                  <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+                  @endforeach
+                </select>	
+                <span class="text-danger">@error('owneruser'){{ $message }} @enderror</span>
               </div>
              
               <button class="btn btn-primary w-100 d-flex align-items-center justify-content-center" type="submit">Add Now
@@ -40,22 +56,4 @@
         </div>
       </div>
     </div>
-  @endsection
-
-  @section('script')
-  <script>
-    $(document).ready(function(){
-      //Chosen
-      $(".multipleChosen").chosen({
-          placeholder_text_multiple: "What's your rating" //placeholder
-      });
-      //Select2
-      $(".multipleSelect2").select2({
-        placeholder: "What's your rating" //placeholder
-      });
-    })
-
-  </script>
-
-
   @endsection

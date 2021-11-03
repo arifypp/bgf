@@ -16,7 +16,7 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->increments('id');
             $table->string('floorno')->nullable();
-            $table->string('unitname')->unique();
+            $table->string('unitname')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
         });

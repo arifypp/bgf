@@ -10,4 +10,9 @@ class Unit extends Model
     use HasFactory;
 
     protected $table = 'units';
+    function floor()
+    {
+    	return $this->belongsTo(Floor::class, 'floorno');
+    }
+
 }

@@ -23,19 +23,27 @@
           <ul class="sidenav-nav ps-0">
             <li><a href="{{ route('homepage') }}"><i class="bi bi-house-door"></i>Home</a></li>
             <!-- Floor Information -->
-            <li><a href="#"><i class="bi bi-building"></i>Floor Information</a>
+            <li><a href="#" class="nav-url @if( Route::currentRouteNamed('floor.manage') || Route::currentRouteNamed('floor.edit') || Route::currentRouteNamed('floor.create') ) dd-open @endif"><i class="bi bi-building"></i>Floor Information</a>
               <!-- Sub Item -->
               <ul>
-                <li><a href="{{ route('floor.manage') }}">Manage Floor</a></li>
+                <li><a href="{{ route('floor.manage') }}" class="@if(Route::currentRouteNamed('floor.manage')) active @endif">Manage Floor</a></li>
                 <li><a href="{{ route('floor.create') }}">Add New Floor</a></li>
               </ul>
           </li>
           <!-- Unit Information -->
-          <li><a href="#"><i class="bi bi-box"></i>Unit Information</a>
+          <li><a href="#" class="nav-url @if( Route::currentRouteNamed('unit.manage') || Route::currentRouteNamed('unit.edit') || Route::currentRouteNamed('unit.create') ) dd-open @endif"><i class="bi bi-box"></i>Unit Information</a>
               <!-- Sub Item -->
               <ul>
                 <li><a href="{{ route('unit.manage') }}">Manage Unit</a></li>
                 <li><a href="{{ route('unit.create') }}">Add New Unit</a></li>
+              </ul>
+          </li>
+          <!-- Owner Information  -->
+          <li><a href="#" class="nav-url @if( Route::currentRouteNamed('ownerlist.manage') || Route::currentRouteNamed('ownerlist.edit') || Route::currentRouteNamed('ownerlist.create') ) dd-open @endif"><i class="bi bi-people"></i>Owner Information</a>
+              <!-- Sub Item -->
+              <ul>
+                <li><a href="{{ route('ownerlist.manage') }}">Owner Manage</a></li>
+                <li><a href="{{ route('ownerlist.create') }}">Add New Owner</a></li>
               </ul>
           </li>
           

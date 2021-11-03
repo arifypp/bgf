@@ -66,6 +66,27 @@ Route::middleware(['verified'])->group(function () {
                 Route::get('/delete/{id}', 'App\Http\Controllers\Backend\UnitController@destroy')->name('unit.destroy');
             });
 
+            // Owner Information
+            Route::group(['prefix' => 'ownerlist'], function() {
+
+                Route::get('/manage', 'App\Http\Controllers\Backend\OwnerlistController@index')->name('ownerlist.manage');
+        
+                Route::get('/create', 'App\Http\Controllers\Backend\OwnerlistController@create')->name('ownerlist.create');
+        
+                Route::post('/store', 'App\Http\Controllers\Backend\OwnerlistController@store')->name('ownerlist.store');
+
+                Route::post('/getflatlist/{id}', 'App\Http\Controllers\Backend\OwnerlistController@getflatlist')->name('ownerlist.getflatlist');
+
+                Route::get('/getEmployees/{id}', [DepartmentsController::class, 'getEmployees']);
+
+        
+                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\OwnerlistController@edit')->name('ownerlist.edit');
+        
+                Route::post('/update/{id}', 'App\Http\Controllers\Backend\OwnerlistController@update')->name('ownerlist.update');
+        
+                Route::get('/delete/{id}', 'App\Http\Controllers\Backend\OwnerlistController@destroy')->name('ownerlist.destroy');
+            });
+
         });
     });
 });
