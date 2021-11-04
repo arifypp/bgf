@@ -1,33 +1,46 @@
 @extends ('Backend.layouts.main')
-@section('title') Edit Floor @endsection
+@section('title') Edit Owner Owner @endsection
   @section('body')
   <div class="page-content-wrapper py-3">
       <div class="container">
         <!-- Element Heading -->
         <div class="element-heading">
-          <h6>Create New Floor</h6>
+          <h6>Edit  Owner</h6>
         </div>
       </div>
       <div class="container">
         <div class="card">
           <div class="card-body">
-            <form action="{{ route('unit.update', $unit->id) }}" method="POST">
+            <form action="{{ route('ownerlist.update', $ownerlist->id) }}" method="POST">
               @csrf
               <div class="form-group">
                 <label class="form-label" for="exampleInputText">Floor Name</label>
-                <select class="form-select form-select-sm" id="defaultSelectSm" aria-label="Default select example" name="floorno">
-                  <option value="-0" selected="">-- Please Select --</option>
-                  @foreach(App\Models\Backend\Floor::orderBy('id', 'desc')->get() as $floor)
-                  <option value="{{ $floor->id }}" @if($floor->id == $unit->floorno) selected @endif>{{ $floor->floorno }}</option>
+                <select class="form-select form-select-sm" id="floorno" aria-label="Default select example" name="floorno">
+                  <option selected="">-- Please Select --</option>
+                  @foreach(App\Models\Backend\Floor::where('id', $ownerlist->floorID)->get() as $floor)
+                  <option value="{{ $floor->id }}" @if($floor->id == $ownerlist->floorID)  selected @endif>{{ $floor->floorno }}</option>
                   @endforeach
                 </select>	
                 <span class="text-danger">@error('floorno'){{ $message }} @enderror</span>
-              </div>              
-
+              </div>
+              
               <div class="form-group">
                 <label class="form-label" for="exampleInputText">Unit Name</label>
-                <input class="form-control" id="exampleInputText" type="text" name="unitname" placeholder="Enter Unit Name" value="{{ $unit->unitname }}">
+                <select class="form-select form-select-sm" id="unitname" aria-label="Default select example" name="unitname">
+                  <option selected="">-- Please Select --</option>
+                </select>	
                 <span class="text-danger">@error('unitname'){{ $message }} @enderror</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="exampleInputText">Owner Name</label>
+                <select class="form-select form-select-sm" id="defaultSelectSm" aria-label="Default select example" name="owneruser" readonly>
+                  <option selected="">-- Please Select --</option>
+                  @foreach(App\Models\User::where('id', $ownerlist->userID)->get() as $owner)
+                  <option value="{{ $owner->id }}" @if($owner->id == $ownerlist->userID)  selected @endif >{{ $owner->name }}</option>
+                  @endforeach
+                </select>	
+                <span class="text-danger">@error('owneruser'){{ $message }} @enderror</span>
               </div>
              
               <button class="btn btn-primary w-100 d-flex align-items-center justify-content-center" type="submit">Save Changes
@@ -43,19 +56,33 @@
   @endsection
 
   @section('script')
-  <script>
-    $(document).ready(function(){
-      //Chosen
-      $(".multipleChosen").chosen({
-          placeholder_text_multiple: "What's your rating" //placeholder
-      });
-      //Select2
-      $(".multipleSelect2").select2({
-        placeholder: "What's your rating" //placeholder
-      });
-    })
-
-  </script>
-
+  <script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="floorno"]').on('change',function(){
+               var countryID = jQuery(this).val();
+               if(countryID)
+               {
+                  jQuery.ajax({
+                     url : '/admin/ownerlist/getflatlist/' +countryID,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="unitname"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="unitname"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="state"]').empty();
+               }
+            });
+    });
+    </script>
 
   @endsection

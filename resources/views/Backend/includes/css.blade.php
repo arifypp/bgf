@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/apexcharts.css') }}">
     <!-- Toastr -->
     <link rel="stylesheet" href="{{ asset('/assets/js/toastr/toastr.min.css') }}">
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="{{ asset('/assets/js/sweetalert2/sweetalert2.min.css') }}">
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{ asset('/assets/style.css') }}">
