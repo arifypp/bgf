@@ -94,11 +94,17 @@ Route::middleware(['verified'])->group(function () {
                 Route::post('/store', 'App\Http\Controllers\Backend\MaintenanceController@store')->name('maintenance.store');
         
                 Route::get('/edit/{id}', 'App\Http\Controllers\Backend\MaintenanceController@edit')->name('maintenance.edit');
+
+                // Invoice Generating
+                Route::get('/invoice/{id}', 'App\Http\Controllers\Backend\MaintenanceController@invoice')->name('maintenance.invoice');
         
                 Route::post('/update/{id}', 'App\Http\Controllers\Backend\MaintenanceController@update')->name('maintenance.update');
         
                 Route::post('/delete/{id}', 'App\Http\Controllers\Backend\MaintenanceController@destroy')->name('maintenance.destroy');
             });
+
+            // Notification System
+            
 
         });
     });

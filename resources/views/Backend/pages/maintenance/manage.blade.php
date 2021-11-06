@@ -18,32 +18,18 @@
               @foreach($maintenance as $value)
                 <tr>
                   <td>{{ $value->title  }}</td>
-                  <td>{{ $value->date  }}</td>
+                  <td>{{date('M d, y', strtotime($value->date))}}</td>
                   <th>{{ $value->amount }} ৳</th>
                   <td class="text-right">
                       <div class="btn-group">
-                      <a class="m-1" href="{{ route('unit.edit', $value->id) }}"><i class="bi bi-gear"></i></a>
-                      <a class="m-1 text-danger" href="#" data-bs-toggle="modal" data-bs-target="#DeleteUnit{{ $value->id }}"><i class="bi bi-trash"></i></a>
+                      <a class="m-1" href="{{ route('maintenance.invoice', $value->id) }}"><i class="bi bi-receipt"></i></a>
+
+                      <a class="m-1" href="{{ route('maintenance.edit', $value->id) }}"><i class="bi bi-gear"></i></a>
+
+                      <a class="m-1 text-danger" href="javascript:void(0)" onclick="deleteConfirmation('{{$value->id}}')"><i class="bi bi-trash"></i></a>
+
                       </div>
                   </td>
-                  <!-- Modal view -->
-                  <div class="modal fade" id="DeleteUnit{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h6 class="modal-title" id="exampleModalLabel">Delete</h6>
-                        <button class="btn btn-close p-1 ms-auto" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <h3>Are you sure want to delete?</h3>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal">No</button>
-                        <a href="{{ route('unit.destroy', $value->id) }}" class="btn btn-sm btn-primary">Confirm</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 </tr>
               @endforeach  
               </tbody>
@@ -53,4 +39,54 @@
         </div>
       </div>
     </div>
+  @endsection
+
+@section('script')
+  <script type="text/javascript">
+    function deleteConfirmation(id) {
+        swal.fire({
+            title: "Delete?",
+            icon: 'question',
+            text: "Please ensure and then confirm!",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            dangerMode: true,
+            reverseButtons: !0
+        }).then(function (e) {
+
+            if (e.value === true) {
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                $.ajaxSetup({
+	                headers: {
+	                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+	                }
+	            });
+                
+                $.ajax({
+                    type: 'POST',
+                    url:  "{{url('/admin/maintenance/delete')}}/" + id,
+                    data: {_token: CSRF_TOKEN},
+                    dataType: 'JSON',
+                    success: function (results) {
+                        if (results.success === true) {
+                            swal.fire("Done!", results.message, "success");
+                            // refresh page after 2 seconds
+                            $('#dataTable').load(document.URL + ' #dataTable');     // Using .reload() method.
+                        } else {
+                            swal.fire("Error!", results.message, "error");
+                        }
+                    }
+                });
+
+            } else {
+                e.dismiss;
+            }
+
+        }, function (dismiss) {
+            return false;
+        })
+    }
+</script>
   @endsection

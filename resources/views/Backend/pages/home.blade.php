@@ -21,15 +21,81 @@
             <div class="element-heading mt-3">
               <h6>Bismillah Garden Family Dashboard</h6>
             </div>
+            <div class="col-12">
+                <div class="card">
+                  <div class="card-body direction-rtl">
+                    <div class="row">
+                      <div class="col-4">
+                        <!-- Single Counter -->
+                        <div class="single-counter-wrap text-center">
+                          <h4 class="mb-0"><span class="counter">৳
+                            @php 
+                              $num = 9800500;
+                              $units = ['', 'K', 'M', 'B', 'T'];
+                                for ($i = 0; $num >= 1000; $i++) {
+                                    $num /= 1000;
+                                }
+                                echo round($num, 1) . $units[$i];
+                            @endphp
+                          </span></h4><span class="solid-line"></span>
+                          <p class="mb-0">Total Balance</p>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <!-- Single Counter -->
+                        <div class="single-counter-wrap text-center">
+                          <h4 class="mb-0"><span class="counter"> ৳
+                          @php 
+                              $num = 51500;
+                              $units = ['', 'K', 'M', 'B', 'T'];
+                                for ($i = 0; $num >= 1000; $i++) {
+                                    $num /= 1000;
+                                }
+                                echo round($num, 1) . $units[$i];
+                            @endphp
+                          </span></h4><span class="solid-line"></span>
+                          <p class="mb-0">Total Cost</p>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <!-- Single Counter -->
+                        <div class="single-counter-wrap text-center">
+                          <h4 class="mb-0"><span class="counter">৳
+                          @php 
+                              $num = 45821;
+                              $units = ['', 'K', 'M', 'B', 'T'];
+                                for ($i = 0; $num >= 1000; $i++) {
+                                    $num /= 1000;
+                                }
+                                echo round($num, 1) . $units[$i];
+                            @endphp
+                          </span></h4><span class="solid-line"></span>
+                          <p class="mb-0">Total Recieved</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
               <!-- Today earning  -->
               <div class="col-6">
                 <div class="card">
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 509990</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 50000;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+
+                          </h5>
                         </div>
-                        <p class="mb-0">Today Earning</p>
+                        <p class="mb-0">Today Recieved</p>
                      </div>
                   </div>
                 </div>
@@ -40,9 +106,18 @@
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 509990</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 59942;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+                          </h5>
                         </div>
-                        <p class="mb-0">Last Week Earning</p>
+                        <p class="mb-0">Last Week Recieved</p>
                      </div>
                   </div>
                 </div>
@@ -53,9 +128,18 @@
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 509990777</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 65429;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+                          </h5>
                         </div>
-                        <p class="mb-0">Last Months Earning</p>
+                        <p class="mb-0">Last Months Recieved</p>
                      </div>
                   </div>
                 </div>
@@ -66,9 +150,18 @@
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 509990777</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 698712;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+                          </h5>
                         </div>
-                        <p class="mb-0">Last Years Earning</p>
+                        <p class="mb-0">Last Years Recieved</p>
                      </div>
                   </div>
                 </div>
@@ -79,7 +172,16 @@
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 5777</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 5871;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+                          </h5>
                         </div>
                         <p class="mb-0">Today Expenses</p>
                      </div>
@@ -92,7 +194,16 @@
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 6528</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 8412;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+                          </h5>
                         </div>
                         <p class="mb-0">Last Week Expenses</p>
                      </div>
@@ -105,7 +216,16 @@
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 4756</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 84692;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+                          </h5>
                         </div>
                         <p class="mb-0">Last Month Expenses</p>
                      </div>
@@ -118,7 +238,16 @@
                   <div class="card-body">
                     <div class="feature-card mx-auto text-center">
                         <div class="card mx-auto">
-                          <h5>৳ 4756</h5>
+                          <h5>৳ 
+                          @php 
+                            $num = 998712;
+                            $units = ['', 'K', 'M', 'B', 'T'];
+                              for ($i = 0; $num >= 1000; $i++) {
+                                  $num /= 1000;
+                              }
+                              echo round($num, 1) . $units[$i];
+                          @endphp
+                          </h5>
                         </div>
                         <p class="mb-0">Last Year Expenses</p>
                      </div>
@@ -193,4 +322,8 @@
          
           <div class="pb-3"></div>
 
+  @endsection
+
+  @section('script')
+  <script src="{{ asset('/assets/js/countdown.js') }}"></script>
   @endsection

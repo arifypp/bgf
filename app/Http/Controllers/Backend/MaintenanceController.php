@@ -81,9 +81,22 @@ class MaintenanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function invoice($id)
     {
         //
+        $maintenance = Maintenance::find($id);
+        if (!is_null($maintenance) ) 
+        {
+            return view('Backend.pages.maintenance.invoice', compact('maintenance'));
+        }else
+        {
+            $notification = array(
+                'message'       => 'Oho!! Data not found!!!',
+                'alert-type'    => 'error'
+            );
+
+            return redirect()->route('maintenance.manage');
+        }
     }
 
     /**
@@ -95,6 +108,19 @@ class MaintenanceController extends Controller
     public function edit($id)
     {
         //
+        $maintenance = Maintenance::find($id);
+        if (!is_null($maintenance) ) 
+        {
+            return view('Backend.pages.maintenance.edit', compact('maintenance'));
+        }else
+        {
+            $notification = array(
+                'message'       => 'Oho!! Data not found!!!',
+                'alert-type'    => 'error'
+            );
+
+            return redirect()->route('maintenance.manage');
+        }
     }
 
     /**
@@ -107,6 +133,36 @@ class MaintenanceController extends Controller
     public function update(Request $request, $id)
     {
         //
+        request->validate([
+            'title'     =>  ['required'],
+            'date'      =>  ['required'],
+            'amount'    =>  ['required'],
+            'details'   =>  ['required'],
+        ],
+
+        $message = [           
+            'title.required'    =>  'This field empty!',
+            'date.required'     =>  'This field empty!',
+            'amount.required'   =>  'This field empty!',
+            'details.required'  =>  'This field empty!',
+        ]);
+
+        $maintenance  =  Maintenance::find($id);
+
+        $maintenance->title     =   $request->title;
+        $maintenance->date      =   $request->date;
+        $maintenance->amount    =   $request->amount;
+        $maintenance->purpose   =   $request->purpose;
+        $maintenance->details   =   $request->details;
+
+        $maintenance->save();
+
+        $notification = array(
+            'message'       => 'Data Updated Successfully!!!',
+            'alert-type'    => 'success'
+        ); 
+
+        return redirect()->route('maintenance.manage')->with($notification);
     }
 
     /**
@@ -118,5 +174,22 @@ class MaintenanceController extends Controller
     public function destroy($id)
     {
         //
+        $delete = Maintenance::where('id', $id)->delete();
+
+        // check data deleted or not
+        if ($delete == 1) {
+            $success = true;
+            $message = "Data deleted successfully";
+            
+        } else {
+            $success = true;
+            $message = "Data not found";
+        }
+
+        //  Return response
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
     }
 }
