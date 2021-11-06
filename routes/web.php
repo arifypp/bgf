@@ -84,6 +84,22 @@ Route::middleware(['verified'])->group(function () {
                 Route::post('/delete/{id}', 'App\Http\Controllers\Backend\OwnerlistController@destroy')->name('ownerlist.destroy');
             });
 
+            // Maintenance Cost
+            Route::group(['prefix' => 'maintenance'], function() {
+
+                Route::get('/manage', 'App\Http\Controllers\Backend\MaintenanceController@index')->name('maintenance.manage');
+        
+                Route::get('/create', 'App\Http\Controllers\Backend\MaintenanceController@create')->name('maintenance.create');
+        
+                Route::post('/store', 'App\Http\Controllers\Backend\MaintenanceController@store')->name('maintenance.store');
+        
+                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\MaintenanceController@edit')->name('maintenance.edit');
+        
+                Route::post('/update/{id}', 'App\Http\Controllers\Backend\MaintenanceController@update')->name('maintenance.update');
+        
+                Route::post('/delete/{id}', 'App\Http\Controllers\Backend\MaintenanceController@destroy')->name('maintenance.destroy');
+            });
+
         });
     });
 });

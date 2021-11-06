@@ -46,6 +46,14 @@
                 <li><a href="{{ route('ownerlist.create') }}">Add New Owner</a></li>
               </ul>
           </li>
+          <!-- Maintenance Cost -->
+          <li><a href="#" class="nav-url @if( Route::currentRouteNamed('maintenance.manage') || Route::currentRouteNamed('maintenance.edit') || Route::currentRouteNamed('maintenance.create') ) dd-open @endif"><i class="bi bi-scissors"></i>Maintenance Cost</a>
+              <!-- Sub Item -->
+              <ul>
+                <li><a href="{{ route('maintenance.manage') }}">Manage Cost</a></li>
+                <li><a href="{{ route('maintenance.create') }}">Add Cost</a></li>
+              </ul>
+          </li>
           
             <li><a href="elements.html"><i class="bi bi-folder2-open"></i>Elements<span class="badge bg-danger rounded-pill ms-2">220+</span></a></li>
             <li><a href="pages.html"><i class="bi bi-collection"></i>Pages<span class="badge bg-success rounded-pill ms-2">100+</span></a></li>
