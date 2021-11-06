@@ -28,7 +28,7 @@
               <label class="form-label" for="Maintenance Date">Amount</label>
               <div class="input-group mb-3">
                 <span class="input-group-text">Amount</span>
-                <input class="form-control" type="text" aria-label="Amount (to the nearest dollar)" placeholder="5000"><span class="input-group-text">৳</span>
+                <input class="form-control" type="text" name="amount" aria-label="Amount (to the nearest dollar)" placeholder="5000"><span class="input-group-text">৳</span>
               </div>
 
               <div class="form-group">
