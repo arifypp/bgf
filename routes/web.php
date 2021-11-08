@@ -104,7 +104,27 @@ Route::middleware(['verified'])->group(function () {
             });
 
             // Notification System
-            
+            Route::group(['prefix' => 'notification'], function() {
+
+                Route::get('/manage', 'App\Http\Controllers\Backend\NotificationController@index')->name('notification.manage');
+
+                // Show notification
+                Route::get('/notify', 'App\Http\Controllers\Backend\NotificationController@notify')->name('notification.notify');
+                // Showe Single Notification
+                Route::get('/notify/{id}', 'App\Http\Controllers\Backend\NotificationController@notifySingle')->name('singlenotify');
+                // Notification seen and unseen
+                Route::post('/seenanduseen', 'App\Http\Controllers\Backend\NotificationController@seenunseen')->name('notification.seenunseen');
+        
+                Route::get('/create', 'App\Http\Controllers\Backend\NotificationController@create')->name('notification.create');
+        
+                Route::post('/store', 'App\Http\Controllers\Backend\NotificationController@store')->name('notification.store');
+        
+                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\NotificationController@edit')->name('notification.edit');
+        
+                Route::post('/update/{id}', 'App\Http\Controllers\Backend\NotificationController@update')->name('notification.update');
+        
+                Route::post('/delete/{id}', 'App\Http\Controllers\Backend\NotificationController@destroy')->name('notification.destroy');
+            });
 
         });
     });

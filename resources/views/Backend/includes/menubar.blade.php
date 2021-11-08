@@ -55,11 +55,11 @@
               </ul>
           </li>
           <!-- Notification System -->
-          <li><a href="#" class="nav-url @if( Route::currentRouteNamed('maintenance.manage') || Route::currentRouteNamed('maintenance.edit') || Route::currentRouteNamed('maintenance.create') ) dd-open @endif"><i class="bi bi-bell"></i>Manage Notificaiton</a>
+          <li><a href="#" class="nav-url @if( Route::currentRouteNamed('notification.manage') || Route::currentRouteNamed('notification.edit') || Route::currentRouteNamed('notification.create') ) dd-open @endif"><i class="bi bi-bell"></i>Manage Notificaiton</a>
               <!-- Sub Item -->
               <ul>
-                <li><a href="{{ route('maintenance.manage') }}">Manage Notification</a></li>
-                <li><a href="{{ route('maintenance.create') }}">Add Notificaiton</a></li>
+                <li><a href="{{ route('notification.manage') }}">Manage Notification</a></li>
+                <li><a href="{{ route('notification.create') }}">Add Notificaiton</a></li>
               </ul>
           </li>
           

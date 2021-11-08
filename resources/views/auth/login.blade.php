@@ -1,5 +1,5 @@
 @extends('Backend.layouts.account')
-
+@section('title') Login  @endsection
 @section('body')
 <div class="custom-container">
     <div class="text-center px-4"><img class="login-intro-img" src="https://designing-world.com/affan-1.4.0/img/bg-img/36.png" alt=""></div>
