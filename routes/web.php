@@ -103,6 +103,29 @@ Route::middleware(['verified'])->group(function () {
                 Route::post('/delete/{id}', 'App\Http\Controllers\Backend\MaintenanceController@destroy')->name('maintenance.destroy');
             });
 
+
+            // Deposit Cost
+            Route::group(['prefix' => 'deposit'], function() {
+
+                Route::get('/manage', 'App\Http\Controllers\Backend\DepositorController@index')->name('deposit.manage');
+        
+                Route::get('/create', 'App\Http\Controllers\Backend\DepositorController@create')->name('deposit.create');
+        
+                Route::post('/store', 'App\Http\Controllers\Backend\DepositorController@store')->name('deposit.store');
+        
+                Route::get('/edit/{id}', 'App\Http\Controllers\Backend\DepositorController@edit')->name('deposit.edit');
+
+                // Invoice Generating
+                Route::get('/invoice/{id}', 'App\Http\Controllers\Backend\DepositorController@invoice')->name('deposit.invoice');
+
+                // Confirm Page
+                Route::get('/confirmed', 'App\Http\Controllers\Backend\DepositorController@confirm')->name('deposit.confirmed');
+        
+                Route::post('/update/{id}', 'App\Http\Controllers\Backend\DepositorController@update')->name('deposit.update');
+        
+                Route::post('/delete/{id}', 'App\Http\Controllers\Backend\DepositorController@destroy')->name('deposit.destroy');
+            });
+
             // Notification System
             Route::group(['prefix' => 'notification'], function() {
 

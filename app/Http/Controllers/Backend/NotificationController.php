@@ -28,7 +28,7 @@ class NotificationController extends Controller
     public function notify()
     {
         //
-        $notification   =   Notification::orderBy('id', 'desc')->get();
+        $notification   =   Notification::with('notificationseen')->get();
         return view('Backend.pages.notification.notify', compact('notification'));
     }
 
