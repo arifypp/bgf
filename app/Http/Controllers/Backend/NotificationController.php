@@ -54,13 +54,15 @@ class NotificationController extends Controller
     public function seenunseen(Request $request)
     {
         $seen = new notificationseen();
+        
         $seen->userid               = $request->user()->id;  
         $seen->notificationID       = $request->postId;  
         $seen->seen                 = '1';  
         $seen->save();
         return response()->json(['success' =>true, 'message'=> 'notification seen']);
         
-
+        
+        
     }
 
     /**
