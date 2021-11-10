@@ -104,7 +104,7 @@
 
                 <div class="form-group">
                   <label class="form-label" for="exampleInputText">Bank Account</label>
-                  <input class="form-control" type="text" name="bankAcc" placeholder="Enter TraxID">
+                  <input class="form-control" type="text" name="bankAcc" placeholder="Enter Account No">
                   <span class="text-danger">@error('bankAcc'){{ $message }} @enderror</span>
                 </div>
               </div>

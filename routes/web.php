@@ -119,7 +119,7 @@ Route::middleware(['verified'])->group(function () {
                 Route::get('/invoice/{id}', 'App\Http\Controllers\Backend\DepositorController@invoice')->name('deposit.invoice');
 
                 // Confirm Page
-                Route::get('/confirmed', 'App\Http\Controllers\Backend\DepositorController@confirm')->name('deposit.confirmed');
+                Route::get('/confirmed/{traxId}', 'App\Http\Controllers\Backend\DepositorController@confirm')->name('deposit.confirmed');
         
                 Route::post('/update/{id}', 'App\Http\Controllers\Backend\DepositorController@update')->name('deposit.update');
         

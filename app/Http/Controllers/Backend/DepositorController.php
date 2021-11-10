@@ -75,12 +75,25 @@ class DepositorController extends Controller
             'alert-type'    => 'success'
         ); 
 
-        return redirect()->route('deposit.confirmed')->with($notification);
+        return redirect()->route('deposit.confirmed', $deposit)->with($notification);
     }
 
-    public function confirm()
+    public function confirm($traxId)
     {
-        return view('Backend.pages.deposit.confirm');
+        
+        $traxId = Depositor::find($traxId);
+        if (!is_null($traxId) ) 
+        {
+            return view('Backend.pages.deposit.confirm', compact('traxId'));
+        }else
+        {
+            $notification = array(
+                'message'       => 'Oho!! Blog data not found!!!',
+                'alert-type'    => 'error'
+            );
+
+            return redirect()->route('floor.manage');
+        }
     }
 
     /**
