@@ -120,11 +120,18 @@ Route::middleware(['verified'])->group(function () {
 
                 // Confirm Page
                 Route::get('/confirmed/{traxId}', 'App\Http\Controllers\Backend\DepositorController@confirm')->name('deposit.confirmed');
+
+                // Status
+                Route::post('/status/{id}', 'App\Http\Controllers\Backend\DepositorController@status')->name('deposit.status');
         
                 Route::post('/update/{id}', 'App\Http\Controllers\Backend\DepositorController@update')->name('deposit.update');
         
                 Route::post('/delete/{id}', 'App\Http\Controllers\Backend\DepositorController@destroy')->name('deposit.destroy');
             });
+
+            // Transiction list
+            
+            Route::get('/transiction', 'App\Http\Controllers\Backend\TransictionController@index')->name('transiction.manage');
 
             // Notification System
             Route::group(['prefix' => 'notification'], function() {
@@ -149,6 +156,23 @@ Route::middleware(['verified'])->group(function () {
                 Route::post('/delete/{id}', 'App\Http\Controllers\Backend\NotificationController@destroy')->name('notification.destroy');
             });
 
+            // Profile Setting
+            Route::group(['prefix' => 'profile'], function() {
+
+                Route::get('/settings', 'App\Http\Controllers\Backend\ProfileSettingsController@index')->name('settings.manage');
+        
+                Route::get('/create', 'App\Http\Controllers\Backend\ProfileSettingsController@create')->name('settings.create');
+        
+                Route::post('/store', 'App\Http\Controllers\Backend\ProfileSettingsController@store')->name('settings.store');
+        
+                Route::get('/password/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@Password')->name('settings.password');
+
+                Route::post('/update/password/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@Updatepassword')->name('settings.Updatepassword');
+        
+                Route::post('/update/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@update')->name('settings.update');
+        
+                Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@destroy')->name('settings.destroy');
+            });
         });
     });
 });

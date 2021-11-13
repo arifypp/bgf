@@ -22,6 +22,8 @@ class DepositorController extends Controller
     public function index()
     {
         //
+        $Depositor = Depositor::orderBy('id', 'desc')->get();
+        return view('Backend.pages.deposit.manage', compact('Depositor'));
     }
 
     /**
@@ -76,6 +78,34 @@ class DepositorController extends Controller
         ); 
 
         return redirect()->route('deposit.confirmed', $deposit)->with($notification);
+    }
+
+    public function invoice($id)
+    {
+        //
+        $deposit = Depositor::find($id);
+        if (!is_null($deposit) ) 
+        {
+            return view('Backend.pages.deposit.invoice', compact('deposit'));
+        }else
+        {
+            $notification = array(
+                'message'       => 'Oho!! Data not found!!!',
+                'alert-type'    => 'error'
+            );
+
+            return redirect()->route('deposit.manage');
+        }
+    }
+
+    public function status($id)
+    {
+        $status = Depositor::find($id);
+        $status->status =   1;
+        $status->save();
+        
+        return response()->json(['success' =>true, 'message'=> 'Payment Accepted']);
+
     }
 
     public function confirm($traxId)
@@ -139,5 +169,23 @@ class DepositorController extends Controller
     public function destroy($id)
     {
         //
+        //
+        $delete = Depositor::where('id', $id)->delete();
+
+        // check data deleted or not
+        if ($delete == 1) {
+            $success = true;
+            $message = "Data deleted successfully";
+            
+        } else {
+            $success = true;
+            $message = "Data not found";
+        }
+
+        //  Return response
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
     }
 }
