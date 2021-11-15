@@ -8,9 +8,10 @@ use Illuminate\Support\Str;
 use App\Models\Backend\Depositor;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Image;
+use File;
 use Session;
 use Auth;
-
 class ProfileSettingsController extends Controller
 {
     /**
@@ -61,6 +62,54 @@ class ProfileSettingsController extends Controller
         //
     }
 
+    public function myprofile($id)
+    {
+        $users = User::find($id);
+        if (!is_null($users) ) 
+        {
+            return view('Backend.pages.profile.profile', compact('users'));
+        }else
+        {
+            $notification = array(
+                'message'       => 'Oho!! Gallery data not found!!!',
+                'alert-type'    => 'error'
+            );
+
+            return back();
+        }
+    }
+
+    public function updateprofile(Request $request, $id)
+    {
+        // return $request->all();
+       
+        $user = User::find($id);
+        $user->name         = $request->name;
+        $user->email        = $request->email;
+        $user->dob          = $request->dateofbirth;
+        $user->address      = $request->address;
+
+        if ($request->avatar) {
+            $avatar = $request->avatar;
+            $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
+            $avatarPath = public_path('/');
+            $avatar->move($avatarPath, $avatarName);
+            if (file_exists(public_path($user->avatar))) {
+                unlink(public_path($user->avatar));
+            }
+            $user->avatar = $avatarName;
+        } 
+
+        $user->save();
+
+        $notification = array(
+            'message'       => 'Data Updated Successfully!!!',
+            'alert-type'    => 'success'
+        ); 
+
+        return redirect()->route('settings.manage')->with($notification);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -104,7 +153,7 @@ class ProfileSettingsController extends Controller
             if ($user) {
                 Session::flash('message', 'Password updated successfully!');
                 Session::flash('alert-class', 'alert-success');
-                return response()->json([
+                return back()->response()->json([
                     'isSuccess' => true,
                     'Message' => "Password updated successfully!"
                 ], 200); // Status code here

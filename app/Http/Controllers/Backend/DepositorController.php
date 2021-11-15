@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Backend\Depositor;
+use App\Models\Backend\TotalCash;
 use Session;
 use Auth;
 use Validator;
-
+use DB;
 
 class DepositorController extends Controller
 {
@@ -103,7 +104,15 @@ class DepositorController extends Controller
         $status = Depositor::find($id);
         $status->status =   1;
         $status->save();
+
+        if( $status->status ==  1 )
+        {
+            DB::table('total_cashes')
+              ->where('id', 1)
+              ->update(['totalamount' => $status->sum('amount')]);
+        }
         
+
         return response()->json(['success' =>true, 'message'=> 'Payment Accepted']);
 
     }
@@ -176,12 +185,16 @@ class DepositorController extends Controller
         if ($delete == 1) {
             $success = true;
             $message = "Data deleted successfully";
+        
             
         } else {
             $success = true;
             $message = "Data not found";
         }
 
+        DB::table('total_cashes')
+        ->where('id', 1)
+        ->update(['totalamount' => $delete->sum('amount')]);
         //  Return response
         return response()->json([
             'success' => $success,

@@ -71,7 +71,7 @@
         <div class="card mb-3 shadow-sm">
           <div class="card-body direction-rtl">
             <p>Account</p>
-            <div class="single-setting-panel"><a href="page-user-profile.html">
+            <div class="single-setting-panel"><a href="{{ route('settings.myprofile', $users->id) }}">
                 <div class="icon-wrapper"><i class="bi bi-person"></i></div>Update Profile</a></div>
             <div class="single-setting-panel"><a href="{{ route('settings.password', $users->id) }}">
                 <div class="icon-wrapper bg-info"><i class="bi bi-lock"></i></div>Change Password</a></div>

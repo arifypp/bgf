@@ -133,7 +133,7 @@ class MaintenanceController extends Controller
     public function update(Request $request, $id)
     {
         //
-        request->validate([
+        $request->validate([
             'title'     =>  ['required'],
             'date'      =>  ['required'],
             'amount'    =>  ['required'],
@@ -156,6 +156,7 @@ class MaintenanceController extends Controller
         $maintenance->details   =   $request->details;
 
         $maintenance->save();
+      
 
         $notification = array(
             'message'       => 'Data Updated Successfully!!!',

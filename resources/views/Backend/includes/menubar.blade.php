@@ -8,15 +8,15 @@
           <div class="sidenav-profile bg-gradient">
             <div class="sidenav-style1"></div>
             <!-- User Thumbnail -->
-            <div class="user-profile"><img src="{{ asset('/assets/img/bg-img/2.jpg') }}" alt=""></div>
+            <div class="user-profile"><img src="{{ asset('/'. auth()->user()->avatar) }}" alt=""></div>
             <!-- User Info -->
             <div class="user-info">
               <h6 class="user-name mb-0">{{ Auth::user()->name }}</h6>
-              @if(Auth::user()->is_super == 0)
-              <span>CEO, Bismillah Garden Family</span>
-              @elseif(Auth::user()->is_super == 1)
-              <span>Flat Owner</span>
-              @endif
+              <span>
+              @foreach( App\Models\Backend\Flatowner::where('userID', auth()->user()->id )->get() as $value )
+                    You're owned of {{ $value->unit->unitname }}
+                  @endforeach
+              </span>
             </div>
           </div>
           <!-- Sidenav Nav -->

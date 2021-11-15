@@ -170,7 +170,12 @@ Route::middleware(['verified'])->group(function () {
                 Route::post('/update/password/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@Updatepassword')->name('settings.Updatepassword');
         
                 Route::post('/update/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@update')->name('settings.update');
-        
+
+                // Update profile
+                Route::get('/myprofile/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@myprofile')->name('settings.myprofile');
+
+                Route::post('/myprofile/update/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@updateprofile')->name('settings.updateprofile');
+
                 Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ProfileSettingsController@destroy')->name('settings.destroy');
             });
         });
