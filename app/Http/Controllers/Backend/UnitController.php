@@ -32,7 +32,13 @@ class UnitController extends Controller
     public function create()
     {
         //
-        return view('Backend.pages.unit.create');
+        if( auth()->user()->is_super == 0 ){
+            return view('Backend.pages.unit.create');
+        }
+        else
+        {
+            return back();
+        }
     }
 
     /**
@@ -44,6 +50,8 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         //
+        if( auth()->user()->is_super == 0 ){
+           
         $request->validate([
             'unitname' => ['required'],
             'floorno'  => ['required'],
@@ -66,6 +74,13 @@ class UnitController extends Controller
         Session::flash('message', 'Data Added Successfully !');
         Session::flash('alert-class', 'alert-success');
         return redirect()->route('unit.manage');
+
+        }
+        else
+        {
+            return back();
+        }
+        
     }
 
     /**
@@ -88,19 +103,29 @@ class UnitController extends Controller
     public function edit($id)
     {
         //
-        $unit = Unit::find($id);
-        if (!is_null($unit) ) 
-        {
-            return view('Backend.pages.unit.edit', compact('unit'));
-        }else
-        {
-            $notification = array(
-                'message'       => 'Oho!! Blog data not found!!!',
-                'alert-type'    => 'error'
-            );
-
-            return redirect()->route('unit.manage');
+        if( auth()->user()->is_super == 0 ){
+            
+            $unit = Unit::find($id);
+            if (!is_null($unit) ) 
+            {
+                return view('Backend.pages.unit.edit', compact('unit'));
+            }else
+            {
+                $notification = array(
+                    'message'       => 'Oho!! Blog data not found!!!',
+                    'alert-type'    => 'error'
+                );
+    
+                return redirect()->route('unit.manage');
+            }
+            
         }
+        else
+        {
+            return back();
+        }
+
+       
     }
 
     /**
@@ -113,28 +138,38 @@ class UnitController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            'unitname' => ['required'],
-            'floorno'  => ['required'],
-        ],
+        if( auth()->user()->is_super == 0 ){
+            
+            $request->validate([
+                'unitname' => ['required'],
+                'floorno'  => ['required'],
+            ],
+    
+            $message = [
+                'unitname.required' => 'Fill out the field',
+                'floorno.required'  =>  'Fill out the field',
+    
+            ]);
+    
+            $unit  =  Unit::find($id);
+    
+            $unit->floorno          = $request->floorno;
+            $unit->unitname         = $request->unitname;
+            $unit->slug             = Str::slug($request->unitname);
+    
+            $unit->save();
+    
+            Session::flash('message', 'Data Saved Successfully !');
+            Session::flash('alert-class', 'alert-success');
+            return redirect()->route('unit.manage');
 
-        $message = [
-            'unitname.required' => 'Fill out the field',
-            'floorno.required'  =>  'Fill out the field',
+        }
+        else
+        {
+            return back();
+        }
 
-        ]);
-
-        $unit  =  Unit::find($id);
-
-        $unit->floorno          = $request->floorno;
-        $unit->unitname         = $request->unitname;
-        $unit->slug             = Str::slug($request->unitname);
-
-        $unit->save();
-
-        Session::flash('message', 'Data Saved Successfully !');
-        Session::flash('alert-class', 'alert-success');
-        return redirect()->route('unit.manage');
+        
     }
 
     /**
@@ -145,25 +180,34 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $unit  =  Unit::find($id);
+        if( auth()->user()->is_super == 0 ){
+            
+            //
+            $unit  =  Unit::find($id);
 
-        if( !is_null($unit) )
-        {
-            $unit->delete();
-            
-            //Inside controller's metho
-            Session::flash('message', 'Deleted successfully !');
-            Session::flash('alert-class', 'alert-success');
-            return redirect()->back();
-            
-        }
-        else
-        {
+            if( !is_null($unit) )
+            {
+                $unit->delete();
+                
+                //Inside controller's metho
+                Session::flash('message', 'Deleted successfully !');
+                Session::flash('alert-class', 'alert-success');
+                return redirect()->back();
+                
+            }
+            else
+            {
+                return redirect()->back()->with('message', 'Somethings is wrong!');
+
+            }
+
             return redirect()->back()->with('message', 'Somethings is wrong!');
 
         }
+        else
+        {
+            return back();
+        }
 
-        return redirect()->back()->with('message', 'Somethings is wrong!');
     }
 }

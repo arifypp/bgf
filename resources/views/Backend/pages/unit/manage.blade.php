@@ -18,7 +18,9 @@
                 <tr>
                   <th>Floor Number</th>
                   <th>Unit Number</th>
+                  @if( auth()->user()->is_super == 0 ){
                   <th>Action</th>
+                  @endif
                 </tr>
               </thead>
               <tbody>
@@ -26,12 +28,14 @@
                 <tr>
                   <td>{{ $units->floor->floorno  }}</td>
                   <td>{{ $units->unitname  }}</td>
+                @if( auth()->user()->is_super == 0 ){  
                   <td class="text-right">
                       <div class="btn-group">
                       <a class="m-1" href="{{ route('unit.edit', $units->id) }}"><i class="bi bi-gear"></i></a>
                       <a class="m-1 text-danger" href="#" data-bs-toggle="modal" data-bs-target="#DeleteUnit{{ $units->id }}"><i class="bi bi-trash"></i></a>
                       </div>
                   </td>
+                @endif
                   <!-- Modal view -->
                   <div class="modal fade" id="DeleteUnit{{ $units->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

@@ -2392,6 +2392,8 @@ form .btn.btn-sm {
   margin-bottom: 0.5rem;
 }
 .sidenav-profile .user-profile img {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
 .sidenav-profile .user-info {

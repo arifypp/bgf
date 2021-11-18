@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-			if (Auth::user()->is_super == 0) {
+			if (Auth::user()->is_super == 0 || Auth::user()->is_super == 1) {
 				return $next($request);
 			} else {
 				Auth::logout();

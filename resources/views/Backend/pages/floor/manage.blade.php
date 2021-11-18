@@ -24,12 +24,17 @@
               @foreach($floor as $floors)
                 <tr>
                   <td>{{ $floors->floorno  }}</td>
+                  
+                 
                   <td class="text-right">
+                  @if(Auth::user()->is_super == 0)
                       <div class="btn-group">
                       <a class="m-1" href="{{ route('floor.edit', $floors->id) }}"><i class="bi bi-gear"></i></a>
                       <a class="m-1 text-danger" href="#" data-bs-toggle="modal" data-bs-target="#DeleteFloor{{ $floors->id }}"><i class="bi bi-trash"></i></a>
                       </div>
+                   @endif
                   </td>
+                  @if(Auth::user()->is_super == 0)
                   <!-- Modal view -->
                   <div class="modal fade" id="DeleteFloor{{ $floors->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -48,6 +53,7 @@
                     </div>
                   </div>
                 </div>
+                @endif
                 </tr>
               @endforeach  
               </tbody>

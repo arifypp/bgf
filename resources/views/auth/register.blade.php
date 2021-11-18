@@ -1,5 +1,5 @@
 @extends('Backend.layouts.account')
-
+@section('title') Registration  @endsection
 @section('body')
     <!-- Login Wrapper Area -->
     <div class="login-wrapper d-flex align-items-center justify-content-center">
@@ -39,7 +39,6 @@
                 <div class="form-group text-start mb-3 position-relative">
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                 </div>
-
                 <button class="btn btn-primary w-100" type="submit">Sign Up</button>
           </form>
         </div>

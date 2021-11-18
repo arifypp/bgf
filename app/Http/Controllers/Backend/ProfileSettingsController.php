@@ -94,9 +94,6 @@ class ProfileSettingsController extends Controller
             $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
             $avatarPath = public_path('/');
             $avatar->move($avatarPath, $avatarName);
-            if (file_exists(public_path($user->avatar))) {
-                unlink(public_path($user->avatar));
-            }
             $user->avatar = $avatarName;
         } 
 
