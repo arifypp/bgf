@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Backend\Maintenance;
+use App\Models\Backend\TotalCash;
 use Session;
 
 class MaintenanceController extends Controller
@@ -66,6 +67,11 @@ class MaintenanceController extends Controller
         $maintenance->details   =   $request->details;
 
         $maintenance->save();
+
+        $TotalCash = TotalCash::find(1);
+        $totalamount = $TotalCash->totalamount - $request->amount;
+        $TotalCash->totalamount = $totalamount;
+        $TotalCash->save();
 
         $notification = array(
             'message'       => 'Data Added Successfully!!!',
