@@ -18,7 +18,7 @@
                 <tr>
                   <th>Floor Number</th>
                   <th>Unit Number</th>
-                  @if( auth()->user()->is_super == 0 ){
+                  @if( auth()->user()->is_super == 0 )
                   <th>Action</th>
                   @endif
                 </tr>
@@ -28,7 +28,7 @@
                 <tr>
                   <td>{{ $units->floor->floorno  }}</td>
                   <td>{{ $units->unitname  }}</td>
-                @if( auth()->user()->is_super == 0 ){  
+                @if( auth()->user()->is_super == 0 )
                   <td class="text-right">
                       <div class="btn-group">
                       <a class="m-1" href="{{ route('unit.edit', $units->id) }}"><i class="bi bi-gear"></i></a>
