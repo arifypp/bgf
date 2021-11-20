@@ -82,7 +82,7 @@
           </li>
           @endif
 
-          <li><a href="{{ route('homepage') }}"><i class="bi bi-currency-dollar"></i>Total Amount</a></li>
+          <li><a href="{{ route('totalcash.manage') }}"><i class="bi bi-currency-dollar"></i>Total Amount</a></li>
 
             <li>
               <div class="night-mode-nav"><i class="bi bi-moon"></i>Night Mode

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Backend\TotalCash;
 class TotalCashController extends Controller
 {
     /**
@@ -15,6 +15,8 @@ class TotalCashController extends Controller
     public function index()
     {
         //
+        $totalcash = TotalCash::orderBy('id', 'desc')->get();
+        return view('Backend.pages.totalcash.manage', compact('totalcash'));
     }
 
     /**

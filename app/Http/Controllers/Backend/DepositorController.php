@@ -111,11 +111,10 @@ class DepositorController extends Controller
         {
             $TotalCash = TotalCash::find(1);
             $totalamount = $TotalCash->totalamount + $status->amount;
+            $CurrentAmount = $TotalCash->currentbalance + $status->amount;
             $TotalCash->totalamount = $totalamount;
+            $TotalCash->currentbalance = $CurrentAmount;
             $TotalCash->save();
-            // DB::table('total_cashes')
-            //   ->where('id', 1)
-            //   ->update(['totalamount' => $status->sum('amount')]);
         }
         
 

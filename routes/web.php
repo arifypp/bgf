@@ -103,7 +103,12 @@ Route::middleware(['verified'])->group(function () {
                 Route::post('/delete/{id}', 'App\Http\Controllers\Backend\MaintenanceController@destroy')->name('maintenance.destroy');
             });
 
-
+            
+            // Total Cost
+            Route::group(['prefix' => 'totalcash'], function() {
+                Route::get('/manage', 'App\Http\Controllers\Backend\TotalCashController@index')->name('totalcash.manage');
+            });
+            
             // Deposit Cost
             Route::group(['prefix' => 'deposit'], function() {
 

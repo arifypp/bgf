@@ -32,7 +32,14 @@ class MaintenanceController extends Controller
     public function create()
     {
         //
-        return view('Backend.pages.maintenance.create');
+        if( auth()->user()->is_super == 0 ){
+            return view('Backend.pages.maintenance.create');
+        }
+        else
+        {
+            return back();
+        }
+        
     }
 
     /**
@@ -43,42 +50,49 @@ class MaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->validate([
-            'title'     =>  ['required'],
-            'date'      =>  ['required'],
-            'amount'    =>  ['required'],
-            'details'   =>  ['required'],
-        ],
+        if( auth()->user()->is_super == 0 ){
+            //
+            $request->validate([
+                'title'     =>  ['required'],
+                'date'      =>  ['required'],
+                'amount'    =>  ['required'],
+                'details'   =>  ['required'],
+            ],
 
-        $message = [           
-            'title.required'    =>  'This field empty!',
-            'date.required'     =>  'This field empty!',
-            'amount.required'   =>  'This field empty!',
-            'details.required'  =>  'This field empty!',
-        ]);
+            $message = [           
+                'title.required'    =>  'This field empty!',
+                'date.required'     =>  'This field empty!',
+                'amount.required'   =>  'This field empty!',
+                'details.required'  =>  'This field empty!',
+            ]);
 
-        $maintenance  =  new Maintenance();
+            $maintenance  =  new Maintenance();
 
-        $maintenance->title     =   $request->title;
-        $maintenance->date      =   $request->date;
-        $maintenance->amount    =   $request->amount;
-        $maintenance->purpose   =   $request->purpose;
-        $maintenance->details   =   $request->details;
+            $maintenance->title     =   $request->title;
+            $maintenance->date      =   $request->date;
+            $maintenance->amount    =   $request->amount;
+            $maintenance->purpose   =   $request->purpose;
+            $maintenance->details   =   $request->details;
 
-        $maintenance->save();
+            $maintenance->save();
 
-        $TotalCash = TotalCash::find(1);
-        $totalamount = $TotalCash->totalamount - $request->amount;
-        $TotalCash->totalamount = $totalamount;
-        $TotalCash->save();
+            $TotalCash = TotalCash::find(1);
+            $totalamount = $TotalCash->currentbalance - $request->amount;
+            $TotalCash->currentbalance = $totalamount;
+            $TotalCash->save();
 
-        $notification = array(
-            'message'       => 'Data Added Successfully!!!',
-            'alert-type'    => 'success'
-        ); 
+            $notification = array(
+                'message'       => 'Data Added Successfully!!!',
+                'alert-type'    => 'success'
+            ); 
 
-        return redirect()->route('maintenance.manage')->with($notification);
+            return redirect()->route('maintenance.manage')->with($notification);
+        }
+        else
+        {
+            return back();
+        }
+        
     }
 
     /**
@@ -113,20 +127,27 @@ class MaintenanceController extends Controller
      */
     public function edit($id)
     {
-        //
-        $maintenance = Maintenance::find($id);
-        if (!is_null($maintenance) ) 
-        {
-            return view('Backend.pages.maintenance.edit', compact('maintenance'));
-        }else
-        {
-            $notification = array(
-                'message'       => 'Oho!! Data not found!!!',
-                'alert-type'    => 'error'
-            );
+        if( auth()->user()->is_super == 0 ){
+            //
+            $maintenance = Maintenance::find($id);
+            if (!is_null($maintenance) ) 
+            {
+                return view('Backend.pages.maintenance.edit', compact('maintenance'));
+            }else
+            {
+                $notification = array(
+                    'message'       => 'Oho!! Data not found!!!',
+                    'alert-type'    => 'error'
+                );
 
-            return redirect()->route('maintenance.manage');
+                return redirect()->route('maintenance.manage');
+            }
         }
+        else
+        {
+            return back();
+        }
+        
     }
 
     /**
@@ -138,38 +159,45 @@ class MaintenanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $request->validate([
-            'title'     =>  ['required'],
-            'date'      =>  ['required'],
-            'amount'    =>  ['required'],
-            'details'   =>  ['required'],
-        ],
+        if( auth()->user()->is_super == 0 ){
+            //
+            $request->validate([
+                'title'     =>  ['required'],
+                'date'      =>  ['required'],
+                'amount'    =>  ['required'],
+                'details'   =>  ['required'],
+            ],
 
-        $message = [           
-            'title.required'    =>  'This field empty!',
-            'date.required'     =>  'This field empty!',
-            'amount.required'   =>  'This field empty!',
-            'details.required'  =>  'This field empty!',
-        ]);
+            $message = [           
+                'title.required'    =>  'This field empty!',
+                'date.required'     =>  'This field empty!',
+                'amount.required'   =>  'This field empty!',
+                'details.required'  =>  'This field empty!',
+            ]);
 
-        $maintenance  =  Maintenance::find($id);
+            $maintenance  =  Maintenance::find($id);
 
-        $maintenance->title     =   $request->title;
-        $maintenance->date      =   $request->date;
-        $maintenance->amount    =   $request->amount;
-        $maintenance->purpose   =   $request->purpose;
-        $maintenance->details   =   $request->details;
+            $maintenance->title     =   $request->title;
+            $maintenance->date      =   $request->date;
+            $maintenance->amount    =   $request->amount;
+            $maintenance->purpose   =   $request->purpose;
+            $maintenance->details   =   $request->details;
 
-        $maintenance->save();
-      
+            $maintenance->save();
+        
 
-        $notification = array(
-            'message'       => 'Data Updated Successfully!!!',
-            'alert-type'    => 'success'
-        ); 
+            $notification = array(
+                'message'       => 'Data Updated Successfully!!!',
+                'alert-type'    => 'success'
+            ); 
 
-        return redirect()->route('maintenance.manage')->with($notification);
+            return redirect()->route('maintenance.manage')->with($notification);
+        }
+        else
+        {
+            return back();
+        }
+        
     }
 
     /**
@@ -180,23 +208,30 @@ class MaintenanceController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $delete = Maintenance::where('id', $id)->delete();
+        if( auth()->user()->is_super == 0 ){
+                 //
+            $delete = Maintenance::where('id', $id)->delete();
 
-        // check data deleted or not
-        if ($delete == 1) {
-            $success = true;
-            $message = "Data deleted successfully";
-            
-        } else {
-            $success = true;
-            $message = "Data not found";
+            // check data deleted or not
+            if ($delete == 1) {
+                $success = true;
+                $message = "Data deleted successfully";
+                
+            } else {
+                $success = true;
+                $message = "Data not found";
+            }
+
+            //  Return response
+            return response()->json([
+                'success' => $success,
+                'message' => $message,
+            ]);
         }
-
-        //  Return response
-        return response()->json([
-            'success' => $success,
-            'message' => $message,
-        ]);
+        else
+        {
+            return back();
+        }
+       
     }
 }
