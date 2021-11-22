@@ -162,6 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Ladumor\LaravelPwa\PWAServiceProvider::class,
+
 
 
         /*
@@ -231,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'LaravelPwa' => \Ladumor\LaravelPwa\LaravelPwa::class,
 
     ],
 

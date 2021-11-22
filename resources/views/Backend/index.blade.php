@@ -62,30 +62,7 @@
     </div>
 
 
-      <script>
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        
-        var closeButtom = document.getElementById("popupVideoBtnClose");
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player("homePagePopupVideo", {
-            videoId: '-D6QFpH7zCA',
-                events: {
-                    'onReady': onPlayerReady,
-                }
-            });
-        }
-        
-        function onPlayerReady(event) {
-            closeButtom.addEventListener("click", function () {
-                player.stopVideo();
-            });
-        }
-        
-      </script>
+ 
 
     <!-- All JavaScript Files -->
     <script src="{{ asset('/assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -102,5 +79,14 @@
     <script src="{{ asset('/assets/js/active.js') }}"></script>
     <!-- PWA -->
     <script src="{{ asset('/assets/js/pwa.js') }}"></script>
+
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function (reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+    </script>
   </body>
 </html>
